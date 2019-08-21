@@ -2,7 +2,7 @@
 
 ## `TIL`
 
-### Dockerfile
+### Docker
 
 -   `Dockerfile`
 
