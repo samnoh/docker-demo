@@ -1,4 +1,4 @@
-# Dockerfiles
+# Docker
 
 ## `TIL`
 
@@ -29,5 +29,11 @@ docker build .
 -   Tag
 
 ```bash
-docker biuld -t <tag name> .
+docker biuld -t <name> .
+```
+
+-   Port Mapping
+
+```bash
+docker run -p 3000:3000 <id/tag>
 ```
