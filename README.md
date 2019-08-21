@@ -29,7 +29,14 @@ docker build .
 -   Tag
 
 ```bash
-docker biuld -t <name> .
+docker build -t <name> .
+```
+
+-   Shell
+
+```bash
+docker run -it <id/tag> sh
+docker exec -it <id/tag> sh
 ```
 
 -   Port Mapping
