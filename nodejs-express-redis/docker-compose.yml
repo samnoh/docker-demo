@@ -1,9 +1,11 @@
-version: '3'
+version: '3.7'
 services:
-    redis-server:
-        image: 'redis'
-    node-app:
+    node-webapp:
+        depends_on:
+            - redis-server
         restart: always
         build: .
         ports:
             - '3000:3000'
+    redis-server:
+        image: redis

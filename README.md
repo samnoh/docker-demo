@@ -45,4 +45,24 @@ docker exec -it <id/tag> sh
 docker run -p 3000:3000 <id/tag>
 ```
 
--   Docker Compose
+### Docker Compose
+
+-   `docker-compose.yml`
+
+```yaml
+version: '3.7'
+services:
+    node-webapp:
+        restart: always
+        depends_on:
+            - redis-server
+        restart: always
+        build: .
+        ports:
+            - '3000:3000'
+    redis-server:
+        image: redis
+```
+
+-   Restart Policy
+    -   "no", always, on-failure, unless-stopped
