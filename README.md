@@ -6,7 +6,7 @@
 
 -   `Dockerfile`
 
-```docker
+```dockerfile
 FROM <base image>
 
 ENV <key> <value>
