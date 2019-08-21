@@ -44,3 +44,5 @@ docker exec -it <id/tag> sh
 ```bash
 docker run -p 3000:3000 <id/tag>
 ```
+
+-   Docker Compose
