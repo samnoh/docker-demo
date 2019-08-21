@@ -24,6 +24,7 @@ CMD <default command>
 
 ```bash
 docker build .
+docker build -f Dockerfile.dev .
 ```
 
 -   Tag
@@ -72,8 +73,8 @@ services:
 
 ```bash
 docker-compose up # run
-docker-compose up -d # in background
 docker-compose up --build # rebuild
+docker-compose up -d # in background
 docker-compose down # stop
 docker-compose ps # status
 ```
