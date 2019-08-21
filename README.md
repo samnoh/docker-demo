@@ -7,7 +7,7 @@
 -   `Dockerfile`
 
 ```dockerfile
-FROM <base image>
+FROM <base image> as builder
 
 ENV <key> <value>
 
@@ -18,6 +18,11 @@ COPY <dir> <container dir>
 RUN <commands in the base image>
 
 CMD <default command>
+
+
+FROM <other base image> as serve
+
+COPY --from=builder <builder dir> <serve dir>
 ```
 
 -   Build
@@ -44,6 +49,13 @@ docker exec -it <id/tag> sh
 
 ```bash
 docker run -p 3000:3000 <id/tag>
+```
+
+-   Reference Files
+    -   reference current working dir except node_modules
+
+```
+docker run -v /app/node_modules -v $(pwd):/app <image id>
 ```
 
 ### Docker Compose
