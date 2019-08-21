@@ -77,6 +77,22 @@ services:
         image: redis
 ```
 
+-   Volumes
+
+```yaml
+volumes:
+    - /app/node_modules
+    - .:/app
+```
+
+-   Override docker file selection
+
+```yaml
+build:
+    context: .
+    dockerfile: Dockerfile.dev
+```
+
 -   Restart Policy
 
     -   `"no"`, `always`, `on-failure`, `unless-stopped`
