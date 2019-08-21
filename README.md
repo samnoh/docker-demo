@@ -65,4 +65,15 @@ services:
 ```
 
 -   Restart Policy
-    -   "no", always, on-failure, unless-stopped
+
+    -   `"no"`, `always`, `on-failure`, `unless-stopped`
+
+-   Commands
+
+```bash
+docker-compose up # run
+docker-compose up -d # in background
+docker-compose up --build # rebuild
+docker-compose down # stop
+docker-compose ps # status
+```
