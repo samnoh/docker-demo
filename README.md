@@ -1,10 +1,10 @@
-# Redis Image
+# Dockerfile Demo
 
 ## `TIL`
 
 ### Dockerfile
 
--   Baseimage
+-   Dockerfile
 
 ```docker
 FROM <base image>
