@@ -106,3 +106,22 @@ docker-compose up -d # in background
 docker-compose down # stop
 docker-compose ps # status
 ```
+
+### Redis
+
+-   Pub & Sub
+
+```javascript
+import redis from 'redis';
+
+const subscriber = redis.createClient();
+const publisher = redis.createClient();
+
+subscriber.on('message', (channel, message) => {
+    console.log(channel, message); // 'noti hello world'
+});
+
+subscriber.subscribe('noti');
+
+publisher.publish('noti', 'hello world'); // trigger
+```
