@@ -1,6 +1,6 @@
 import { Pool } from 'pg';
 
-import { pgUser, pgHost, pgDatabase, pgPassword, pgPort } from './util/keys';
+import { pgUser, pgHost, pgDatabase, pgPassword, pgPort } from '../util/keys';
 
 export const client = new Pool({
     user: pgUser,

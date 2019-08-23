@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import OtherPage from './OtherPage';
-import Fib from './Fib';
 import Navbar from './Navbar';
+import Fib from './Fib';
+import OtherPage from './OtherPage';
 
 function App() {
     return (

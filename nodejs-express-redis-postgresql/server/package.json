@@ -4,7 +4,7 @@
     "description": "Express Webserver",
     "main": "build/index.js",
     "scripts": {
-        "dev": "nodemon --exec babel-node src/app.js",
+        "dev": "nodemon --exec babel-node src/index.js",
         "build": "npm run clean && babel src --out-dir build --copy-files",
         "clean": "rm -rf build"
     },

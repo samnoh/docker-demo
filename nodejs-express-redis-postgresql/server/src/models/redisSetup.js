@@ -1,7 +1,7 @@
 import Promise from 'bluebird';
 import redis from 'redis';
 
-import { redisHost, redisPort } from './util/keys';
+import { redisHost, redisPort } from '../util/keys';
 
 Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
