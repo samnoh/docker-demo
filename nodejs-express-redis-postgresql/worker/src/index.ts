@@ -3,7 +3,7 @@ import { fib } from './util';
 
 const redis = Redis.DefaultSetup();
 
-redis.subClient.on('message', (channel, message: string) => {
+redis.subClient.on('message', (channel: string, message: string) => {
     const index: number = parseInt(message);
 
     redis.mainClient.hset('value', message, '' + fib(index));
