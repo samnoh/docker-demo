@@ -3,12 +3,12 @@ import redis, { RedisClient } from 'redis';
 import { redisHost, redisPort } from '../util';
 
 export interface IRedis {
-    mainClient: RedisClient;
-    subClient: RedisClient;
+    client: RedisClient;
+    subscriber: RedisClient;
 }
 
 export class Redis implements IRedis {
-    constructor(public mainClient: RedisClient, public subClient: RedisClient) {}
+    constructor(public client: RedisClient, public subscriber: RedisClient) {}
 
     static DefaultSetup(): Redis {
         const main = redis.createClient({

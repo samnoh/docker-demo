@@ -4,12 +4,16 @@ import cors from 'cors';
 import './models/pgSetup';
 import './models/redisSetup';
 
+import indexRouter from './routes/index';
+
 const app = express();
 
 app.set('port', process.env.PORT || 5000);
 
 app.use(cors());
 app.use(express.json());
+
+app.use(indexRouter);
 
 app.listen(app.get('port'), () => {
     console.log('Listening on', app.get('port'));
