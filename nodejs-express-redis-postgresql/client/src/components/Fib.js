@@ -16,13 +16,14 @@ const Fib = () => {
             setValues(fetchedValues);
         };
         fn();
-    });
+    }, []);
 
     const handleSubmit = useCallback(
         e => {
             e.preventDefault();
             postIndex(index);
             setIndex('');
+            window.location.reload();
         },
         [index]
     );
@@ -34,6 +35,7 @@ const Fib = () => {
     const renderValues = useCallback(() => {
         const entries = [];
 
+        // eslint-disable-next-line
         for (let key in values) {
             entries.push(
                 <div key={key}>
@@ -57,10 +59,8 @@ const Fib = () => {
                 />
                 <button>Submit</button>
             </form>
-
             <h3>Indexes I have seen:</h3>
             {renderSeenIndexes()}
-
             <h3>Calculated Values:</h3>
             {renderValues()}
         </>

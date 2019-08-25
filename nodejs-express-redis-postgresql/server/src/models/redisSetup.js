@@ -12,4 +12,4 @@ export const client = redis.createClient({
     retry_strategy: () => 1000 // 1 second
 });
 
-export const publisher = redisClient.duplicate();
+export const publisher = client.duplicate();
