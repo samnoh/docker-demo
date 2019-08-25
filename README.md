@@ -133,22 +133,20 @@ publisher.publish('noti', 'hello world'); // trigger
 -   `/etc/nginx/conf.d/default.conf`
 
 ```nginx
-http{
-    server {
-        listen 80 default_server;
-        server_name www.example.com;
-        root   /usr/share/nginx/html;
+server {
+    listen 80 default_server;
+    server_name www.example.com;
+    root   /usr/share/nginx/html;
 
-        location / {
-            add_header X-Frame-Options SAMEORIGIN; # add headers
-            add_header X-Content-Type-Options nosniff;
-            add_header X-XSS-Protection "1; mode=block";
-            index index.html index.htm; # serves static file
-        }
+    location / {
+        add_header X-Frame-Options SAMEORIGIN; # add headers
+        add_header X-Content-Type-Options nosniff;
+        add_header X-XSS-Protection "1; mode=block";
+        index index.html index.htm; # serves static file
+    }
 
-        location /api {
-            proxy_pass http://www.example.com:8080 # proxy
-        }
+    location /api {
+        proxy_pass http://www.example.com:8080 # proxy
     }
 }
 ```
