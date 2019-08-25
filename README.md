@@ -126,21 +126,24 @@ subscriber.subscribe('noti');
 publisher.publish('noti', 'hello world'); // trigger
 ```
 
-### nginx
+### NGINX
 
 -   [Documentation](https://docs.nginx.com/nginx/admin-guide/web-server/web-server/)
 
 -   `/etc/nginx/conf.d/default.conf`
 
-```
+```nginx
 http{
     server {
-        listen 80;
+        listen 80 default_server;
         server_name www.example.com;
-        root   /usr/share/nginx/html; # default location
+        root   /usr/share/nginx/html;
 
         location / {
-            index index.html; # serves static file
+            add_header X-Frame-Options SAMEORIGIN; # add headers
+            add_header X-Content-Type-Options nosniff;
+            add_header X-XSS-Protection "1; mode=block";
+            index index.html index.htm; # serves static file
         }
 
         location /api {
@@ -148,4 +151,34 @@ http{
         }
     }
 }
+```
+
+-   HTTPS setup
+
+```nginx
+server {
+    listen 80 default_server;
+    server_name _;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name _;
+
+    ssl_certificate /etc/nginx/ssl/example.crt;
+    ssl_certificate_key /etc/nginx/ssl/example.key;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index index.html index.htm;
+    }
+}
+```
+
+-   Create self-signed ssl certificate
+    -   not recommended for production
+
+```bash
+openssl req -newkey rsa:4096 -x059 -sha256 -days 365 -nodes -out etc/nginx/ssl/example.crt -keyout /etc/nginx/ssl/example.key
 ```
