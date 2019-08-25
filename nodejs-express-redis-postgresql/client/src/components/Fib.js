@@ -52,6 +52,7 @@ const Fib = () => {
             <form onSubmit={handleSubmit}>
                 <label>Enter your index:</label>
                 <input
+                    type="number"
                     value={index}
                     onChange={e => {
                         setIndex(e.target.value);
