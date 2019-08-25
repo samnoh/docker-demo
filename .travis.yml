@@ -1,0 +1,20 @@
+sudo: required
+language: generic
+services:
+    - docker
+before_install:
+    - docker build -t samnoh/react-test -f ./nodejs-express-redis-postgresql/client/Dockerfile.dev ./nodejs-express-redis-postgresql/client
+script:
+    - docker run -e CI=true samnoh/react-test npm test
+after_success:
+    - docker build -t samnoh/test-client ./nodejs-express-redis-postgresql/client
+    - docker build -t samnoh/test-nginx ./nodejs-express-redis-postgresql/nginx
+    - docker build -t samnoh/test-server ./nodejs-express-redis-postgresql/server
+    - docker build -t samnoh/test-worker ./nodejs-express-redis-postgresql/worker
+    # Log in to the Docker CLI
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    # push images to Docker Hub
+    - docker push samnoh/test-client
+    - docker push samnoh/test-nginx
+    - docker push samnoh/test-server
+    - docker push samnoh/test-worker

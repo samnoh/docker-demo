@@ -146,7 +146,7 @@ server {
     }
 
     location /api {
-        proxy_pass http://www.example.com:8080 # proxy
+        proxy_pass http://www.example.com:8080; # proxy
     }
 }
 ```
