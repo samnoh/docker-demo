@@ -18,3 +18,16 @@ after_success:
     - docker push samnoh/test-nginx
     - docker push samnoh/test-server
     - docker push samnoh/test-worker
+deploy:
+    provider: elasticbeanstalk
+    region: ap-southeast-2
+    app: multi-docker
+    env: MultiDocker-env
+    bucket_name: elasticbeanstalk-ap-southeast-2-059937204533
+    bucket_path: docker-multi
+    on:
+        branch: master
+    access_key_id:
+        secure: $AWS_ACCESS_KEY
+    secret_access_key:
+        secure: $AWS_SECRET_KEY
