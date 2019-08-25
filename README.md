@@ -125,3 +125,27 @@ subscriber.subscribe('noti');
 
 publisher.publish('noti', 'hello world'); // trigger
 ```
+
+### nginx
+
+-   [Documentation](https://docs.nginx.com/nginx/admin-guide/web-server/web-server/)
+
+-   `/etc/nginx/conf.d/default.conf`
+
+```
+http{
+    server {
+        listen 80;
+        server_name www.example.com;
+        root   /usr/share/nginx/html; # default location
+
+        location / {
+            index index.html; # serves static file
+        }
+
+        location /api {
+            proxy_pass http://www.example.com:8080 # proxy
+        }
+    }
+}
+```
