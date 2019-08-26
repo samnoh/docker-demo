@@ -10,10 +10,14 @@ const Fib = () => {
     useEffect(() => {
         const fn = async () => {
             const indexes = await getIndexes();
-            indexes && setSeenIndexes(indexes);
+            if (Array.isArray(indexes)) {
+                setSeenIndexes(indexes);
+            }
 
             const fetchedValues = await getValues();
-            fetchedValues && setValues(fetchedValues);
+            if (typeof fetchedValues === 'object') {
+                fetchedValues && setValues(fetchedValues);
+            }
         };
         fn();
     }, []);
