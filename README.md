@@ -181,5 +181,3 @@ server {
 ```bash
 openssl req -newkey rsa:4096 -x059 -sha256 -days 365 -nodes -out etc/nginx/ssl/example.crt -keyout /etc/nginx/ssl/example.key
 ```
-
-### Kubernetes
